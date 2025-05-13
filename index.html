@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Vibe Code Weekend in Bismarck, ND, March 15-16, 2025, to build a web or mobile app prototype with AI-powered Python coding. No experience needed!">
+    <title>Vibe Code Weekend | Bismarck, ND</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1a1a40;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6b48ff 0%, #00ddeb 100%);
+            color: white;
+            text-align: center;
+            padding: 140px 20px;
+            position: relative;
+            overflow: hidden;
+            animation: heroFade 2s ease-in;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1516321310764-0a238dddc830?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: slideIn 1.2s ease-in;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6f61, #ff3e5b);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 1.3rem;
+            color: #ffeb3b;
+            margin: 20px 0;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a40;
+            animation: fadeIn 1s ease-in;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 1s ease-in;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #6b48ff;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: #fff;
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .pricing h3 {
+            font-size: 2.2rem;
+            color: #1a1a40;
+            margin-bottom: 15px;
+        }
+
+        .pricing .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        .pricing .strikethrough {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.8rem;
+            margin-left: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials .card {
+            background: #f4f7fc;
+            font-style: italic;
+        }
+
+        /* FAQ Accordion */
+        .faq .card {
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq .answer {
+            display: none;
+            padding-top: 10px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .faq input[type="checkbox"] {
+            display: none;
+        }
+
+        .faq input[type="checkbox"]:checked + .question + .answer {
+            display: block;
+        }
+
+        .faq .question {
+            font-weight: 600;
+            color: #6b48ff;
+        }
+
+        /* Get Ready Section */
+        .get-ready .card {
+            text-align: left;
+        }
+
+        .get-ready ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .get-ready ul li {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .get-ready ul li::before {
+            content: '✔';
+            color: #6b48ff;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Form */
+        .signup-form {
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .signup-form input:focus {
+            border-color: #6b48ff;
+            outline: none;
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .sticky-cta .cta-button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a40;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: #00ddeb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ff6f61;
+        }
+
+        /* Animations */
+        @keyframes heroFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+
+            .pricing .price {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Vibe Code Weekend</h1>
+            <p>Bismarck’s ultimate coding experience! Build a web or mobile app prototype in just 2 days with AI-powered Python—no coding skills needed!</p>
+            <a href="#signup" class="cta-button">Claim Your Spot Now!</a>
+            <div class="countdown" id="countdown">Early-Bird ($299) Ends in: <span id="timer"></span></div>
+        </div>
+    </section>
+
+    <!-- Course Details -->
+    <section id="details">
+        <h2>Launch Your App in Bismarck, ND</h2>
+        <p>Join our high-energy, in-person workshop at Bismarck State College and turn your idea into a working web or mobile app prototype. Learn Python with Cursor’s AI magic, master ideation, and pitch like a pro!</p>
+        <div class="cards">
+            <div class="card">
+                <h3>📅 When</h3>
+                <p>March 15-16, 2025<br>9 AM - 3 PM (6 Hours/Day)</p>
+            </div>
+            <div class="card">
+                <h3>📍 Where</h3>
+                <p>Bismarck State College, Bismarck, ND</p>
+            </div>
+            <div class="card">
+                <h3>💻 What to Bring</h3>
+                <p>Your laptop and a bold idea!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Ready Section -->
+    <section id="get-ready" class="get-ready">
+        <h2>Get Ready to Vibe Code</h2>
+        <p>Hit the ground running with these prep steps to ensure a smooth, distraction-free weekend!</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Prep Your Laptop</h3>
+                <ul>
+                    <li>Install Python 3.11, Cursor (free tier), Streamlit, and Kivy.</li>
+                    <li>Test your setup with our [Setup Video](#) (link coming soon).</li>
+                    <li>Complete the [Pre-Course Checklist](#) by March 10, 2025.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Get Support</h3>
+                <ul>
+                    <li>Join our Setup Help Session on Zoom, March 12, 2025, 7 PM CST.</li>
+                    <li>Email <a href="mailto:support@vibe-code-weekend.com">support@vibe-code-weekend.com</a>.</li>
+                    <li>Chat in our [Discord Community](#) (link coming soon).</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#signup" class="cta-button" style="margin-top: 40px;">Sign Up & Start Prepping!</a>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section id="learn">
+        <h2>What You’ll Create</h2>
+        <p>Go from zero to prototype with skills to launch your Bismarck startup.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>AI-Powered Coding</h3>
+                <p>Write Python with Cursor’s AI prompts and autocomplete—no coding skills needed.</p>
+            </div>
+            <div class="card">
+                <h3>Web or Mobile App</h3>
+                <p>Build a working prototype, like a to-do list (web) or habit tracker (mobile).</p>
+            </div>
+            <div class="card">
+                <h3>UI/UX Design</h3>
+                <p>Design user-friendly apps with simple, effective principles.</p>
+            </div>
+            <div class="card">
+                <h3>Killer Pitch</h3>
+                <p>Craft a 2-minute pitch to impress investors or collaborators.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It’s For -->
+    <section id="audience">
+        <h2>Who’s This For?</h2>
+        <p>Bismarck’s dreamers, students, and entrepreneurs with bold ideas. No coding experience needed—just basic computer skills and a passion to create. Join North Dakota’s tech revolution!</p>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <h2>What Students Say</h2>
+        <p>Hear from others who brought their ideas to life.</p>
+        <div class="cards">
+            <div class="card">
+                <p>“Vibe Code Weekend was a game-changer! I built my app idea in 2 days with zero coding experience.”</p>
+                <h3>— Sarah, Bismarck Student</h3>
+            </div>
+            <div class="card">
+                <p>“The AI tools and hands-on support made it so easy to create a prototype. I’m ready to pitch!”</p>
+                <h3>— Mike, Local Entrepreneur</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <p>Only 20 spots available—grab yours before they’re gone!</p>
+        <div class="pricing">
+            <h3>Early-Bird (First 10 Sign-Ups)</h3>
+            <p class="price">$299 <span class="strikethrough">$349</span></p>
+            <h3>Regular Price</h3>
+            <p class="price">$349</p>
+            <a href="#signup" class="cta-button">Claim Your Spot!</a>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule">
+        <h2>Weekend Schedule</h2>
+        <p>12 hours of hands-on learning to launch your idea.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Day 1: Web App & Ideation</h3>
+                <p>Brainstorm your idea, learn Cursor and Python, and build a web app with Streamlit.</p>
+            </div>
+            <div class="card">
+                <h3>Day 2: Mobile App & Pitching</h3>
+                <p>Create a mobile app with Kivy, enhance with UI/UX, and nail your pitch.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor -->
+    <section id="instructor">
+        <h2>Your Instructor</h2>
+        <p>Learn from a seasoned software engineer and product owner with years of experience building cutting-edge apps. With 3-5 expert assistants, you’ll get personalized support to make your prototype shine.</p>
+        <div class="card">
+            <h3>[Your Name]</h3>
+            <p>Software Engineer & Product Owner</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <p>Got questions? We’ve got answers.</p>
+        <div class="cards faq">
+            <div class="card">
+                <input type="checkbox" id="faq1">
+                <label class="question" for="faq1">Do I need coding experience?</label>
+                <div class="answer">No! This course is designed for complete beginners with basic computer skills.</div>
+            </div>
+            <div class="card">
+                <input type="checkbox" id="faq2">
+                <label class="question" for="faq2">What kind of app can I build?</label>
+                <div class="answer">You’ll create a web or mobile app prototype, like a to-do list, habit tracker, or your unique idea.</div>
+            </div>
+            <div class="card">
+                <input type="checkbox" id="faq3">
+                <label class="question" for="faq3">What do I need to bring?</label>
+                <div class="answer">Just your laptop and an idea! We’ll guide you through installing everything.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign-Up Form -->
+    <section id="signup">
+        <h2>Join Vibe Code Weekend</h2>
+        <p>Only 20 spots left—claim yours now to code your app in Bismarck!</p>
+        <div class="signup-form">
+            <form action="[Insert Google Form URL]" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number (Optional)">
+                <button type="submit" class="cta-button">Claim Your Spot Now!</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="sticky-cta">
+        <a href="#signup" class="cta-button">Only 20 Spots Left!</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Vibe Code Weekend. All rights reserved. | <a href="mailto:contact@vibe-code-weekend.com">Contact Us</a> | Bismarck, ND</p>
+    </footer>
+
+    <script>
+        // Countdown Timer for Early-Bird
+        function countdown() {
+            const endDate = new Date("2025-03-01T23:59:59").getTime(); // Update to your early-bird deadline
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("timer").innerText = `${days}d ${hours}h ${minutes}m`;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerText = "Early-Bird Pricing Ended!";
+            }
+        }
+        setInterval(countdown, 1000);
+
+        // Sticky CTA on Scroll
+        window.addEventListener("scroll", () => {
+            const stickyCta = document.getElementById("sticky-cta");
+            if (window.scrollY > 300) {
+                stickyCta.style.display = "block";
+            } else {
+                stickyCta.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
