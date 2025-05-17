@@ -1,550 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join Vibe Code Weekend in Bismarck, ND, March 15-16, 2025, to build a web or mobile app prototype with AI-powered Python coding. No experience needed!">
-    <title>Vibe Code Weekend | Bismarck, ND</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: #f8fafc;
-            color: #1a1a40;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #6b48ff 0%, #00ddeb 100%);
-            color: white;
-            text-align: center;
-            padding: 140px 20px;
-            position: relative;
-            overflow: hidden;
-            animation: heroFade 2s ease-in;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1516321310764-0a238dddc830?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            opacity: 0.3;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            animation: slideIn 1s ease-in;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            animation: slideIn 1.2s ease-in;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #ff6f61, #ff3e5b);
-            color: white;
-            padding: 18px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.3rem;
-            display: inline-block;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: pulse 2s infinite;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Countdown Timer */
-        .countdown {
-            font-size: 1.3rem;
-            color: #ffeb3b;
-            margin: 20px 0;
-            font-weight: 600;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #1a1a40;
-            animation: fadeIn 1s ease-in;
-        }
-
-        section p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #555;
-        }
-
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: slideUp 1s ease-in;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: #6b48ff;
-        }
-
-        /* Pricing */
-        .pricing {
-            background: #fff;
-            padding: 60px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-        }
-
-        .pricing h3 {
-            font-size: 2.2rem;
-            color: #1a1a40;
-            margin-bottom: 15px;
-        }
-
-        .pricing .price {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #ff6f61;
-            margin-bottom: 20px;
-        }
-
-        .pricing .strikethrough {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1.8rem;
-            margin-left: 15px;
-        }
-
-        /* Testimonials */
-        .testimonials .card {
-            background: #f4f7fc;
-            font-style: italic;
-        }
-
-        /* FAQ Accordion */
-        .faq .card {
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .faq .answer {
-            display: none;
-            padding-top: 10px;
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .faq input[type="checkbox"] {
-            display: none;
-        }
-
-        .faq input[type="checkbox"]:checked + .question + .answer {
-            display: block;
-        }
-
-        .faq .question {
-            font-weight: 600;
-            color: #6b48ff;
-        }
-
-        /* Get Ready Section */
-        .get-ready .card {
-            text-align: left;
-        }
-
-        .get-ready ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .get-ready ul li {
-            font-size: 1.1rem;
-            margin: 10px 0;
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .get-ready ul li::before {
-            content: '✔';
-            color: #6b48ff;
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        /* Form */
-        .signup-form {
-            max-width: 600px;
-            margin: 40px auto;
-        }
-
-        .signup-form input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .signup-form input:focus {
-            border-color: #6b48ff;
-            outline: none;
-        }
-
-        /* Sticky CTA */
-        .sticky-cta {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: none;
-        }
-
-        .sticky-cta .cta-button {
-            padding: 12px 30px;
-            font-size: 1.1rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a40;
-            color: white;
-            text-align: center;
-            padding: 40px;
-            font-size: 1rem;
-        }
-
-        footer a {
-            color: #00ddeb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #ff6f61;
-        }
-
-        /* Animations */
-        @keyframes heroFade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            section h2 {
-                font-size: 2.5rem;
-            }
-
-            .cta-button {
-                padding: 15px 40px;
-                font-size: 1.1rem;
-            }
-
-            .pricing .price {
-                font-size: 3rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Vibe Code Weekend in Bismarck, ND, March 15-16, 2025, to build and deploy a web app prototype with AI-powered Python. No experience needed!">
+  <title>Vibe Code Weekend | Bismarck, ND</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Vibe Code Weekend</h1>
-            <p>Bismarck’s ultimate coding experience! Build a web or mobile app prototype in just 2 days with AI-powered Python—no coding skills needed!</p>
-            <a href="#signup" class="cta-button">Claim Your Spot Now!</a>
-            <div class="countdown" id="countdown">Early-Bird ($299) Ends in: <span id="timer"></span></div>
-        </div>
-    </section>
-
-    <!-- Course Details -->
-    <section id="details">
-        <h2>Launch Your App in Bismarck, ND</h2>
-        <p>Join our high-energy, in-person workshop at Bismarck State College and turn your idea into a working web or mobile app prototype. Learn Python with Cursor’s AI magic, master ideation, and pitch like a pro!</p>
-        <div class="cards">
-            <div class="card">
-                <h3>📅 When</h3>
-                <p>March 15-16, 2025<br>9 AM - 3 PM (6 Hours/Day)</p>
-            </div>
-            <div class="card">
-                <h3>📍 Where</h3>
-                <p>Bismarck State College, Bismarck, ND</p>
-            </div>
-            <div class="card">
-                <h3>💻 What to Bring</h3>
-                <p>Your laptop and a bold idea!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Get Ready Section -->
-    <section id="get-ready" class="get-ready">
-        <h2>Get Ready to Vibe Code</h2>
-        <p>Hit the ground running with these prep steps to ensure a smooth, distraction-free weekend!</p>
-        <div class="cards">
-            <div class="card">
-                <h3>Prep Your Laptop</h3>
-                <ul>
-                    <li>Install Python 3.11, Cursor (free tier), Streamlit, and Kivy.</li>
-                    <li>Test your setup with our [Setup Video](#) (link coming soon).</li>
-                    <li>Complete the [Pre-Course Checklist](#) by March 10, 2025.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Get Support</h3>
-                <ul>
-                    <li>Join our Setup Help Session on Zoom, March 12, 2025, 7 PM CST.</li>
-                    <li>Email <a href="mailto:support@vibe-code-weekend.com">support@vibe-code-weekend.com</a>.</li>
-                    <li>Chat in our [Discord Community](#) (link coming soon).</li>
-                </ul>
-            </div>
-        </div>
-        <a href="#signup" class="cta-button" style="margin-top: 40px;">Sign Up & Start Prepping!</a>
-    </section>
-
-    <!-- What You'll Learn -->
-    <section id="learn">
-        <h2>What You’ll Create</h2>
-        <p>Go from zero to prototype with skills to launch your Bismarck startup.</p>
-        <div class="cards">
-            <div class="card">
-                <h3>AI-Powered Coding</h3>
-                <p>Write Python with Cursor’s AI prompts and autocomplete—no coding skills needed.</p>
-            </div>
-            <div class="card">
-                <h3>Web or Mobile App</h3>
-                <p>Build a working prototype, like a to-do list (web) or habit tracker (mobile).</p>
-            </div>
-            <div class="card">
-                <h3>UI/UX Design</h3>
-                <p>Design user-friendly apps with simple, effective principles.</p>
-            </div>
-            <div class="card">
-                <h3>Killer Pitch</h3>
-                <p>Craft a 2-minute pitch to impress investors or collaborators.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who It’s For -->
-    <section id="audience">
-        <h2>Who’s This For?</h2>
-        <p>Bismarck’s dreamers, students, and entrepreneurs with bold ideas. No coding experience needed—just basic computer skills and a passion to create. Join North Dakota’s tech revolution!</p>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials">
-        <h2>What Students Say</h2>
-        <p>Hear from others who brought their ideas to life.</p>
-        <div class="cards">
-            <div class="card">
-                <p>“Vibe Code Weekend was a game-changer! I built my app idea in 2 days with zero coding experience.”</p>
-                <h3>— Sarah, Bismarck Student</h3>
-            </div>
-            <div class="card">
-                <p>“The AI tools and hands-on support made it so easy to create a prototype. I’m ready to pitch!”</p>
-                <h3>— Mike, Local Entrepreneur</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing">
-        <h2>Pricing</h2>
-        <p>Only 20 spots available—grab yours before they’re gone!</p>
-        <div class="pricing">
-            <h3>Early-Bird (First 10 Sign-Ups)</h3>
-            <p class="price">$299 <span class="strikethrough">$349</span></p>
-            <h3>Regular Price</h3>
-            <p class="price">$349</p>
-            <a href="#signup" class="cta-button">Claim Your Spot!</a>
-        </div>
-    </section>
-
-    <!-- Schedule -->
-    <section id="schedule">
-        <h2>Weekend Schedule</h2>
-        <p>12 hours of hands-on learning to launch your idea.</p>
-        <div class="cards">
-            <div class="card">
-                <h3>Day 1: Web App & Ideation</h3>
-                <p>Brainstorm your idea, learn Cursor and Python, and build a web app with Streamlit.</p>
-            </div>
-            <div class="card">
-                <h3>Day 2: Mobile App & Pitching</h3>
-                <p>Create a mobile app with Kivy, enhance with UI/UX, and nail your pitch.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instructor -->
-    <section id="instructor">
-        <h2>Your Instructor</h2>
-        <p>Learn from a seasoned software engineer and product owner with years of experience building cutting-edge apps. With 3-5 expert assistants, you’ll get personalized support to make your prototype shine.</p>
-        <div class="card">
-            <h3>[Your Name]</h3>
-            <p>Software Engineer & Product Owner</p>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <p>Got questions? We’ve got answers.</p>
-        <div class="cards faq">
-            <div class="card">
-                <input type="checkbox" id="faq1">
-                <label class="question" for="faq1">Do I need coding experience?</label>
-                <div class="answer">No! This course is designed for complete beginners with basic computer skills.</div>
-            </div>
-            <div class="card">
-                <input type="checkbox" id="faq2">
-                <label class="question" for="faq2">What kind of app can I build?</label>
-                <div class="answer">You’ll create a web or mobile app prototype, like a to-do list, habit tracker, or your unique idea.</div>
-            </div>
-            <div class="card">
-                <input type="checkbox" id="faq3">
-                <label class="question" for="faq3">What do I need to bring?</label>
-                <div class="answer">Just your laptop and an idea! We’ll guide you through installing everything.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sign-Up Form -->
-    <section id="signup">
-        <h2>Join Vibe Code Weekend</h2>
-        <p>Only 20 spots left—claim yours now to code your app in Bismarck!</p>
-        <div class="signup-form">
-            <form action="[Insert Google Form URL]" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="tel" name="phone" placeholder="Phone Number (Optional)">
-                <button type="submit" class="cta-button">Claim Your Spot Now!</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Sticky CTA -->
-    <div class="sticky-cta" id="sticky-cta">
-        <a href="#signup" class="cta-button">Only 20 Spots Left!</a>
+  <header class="hero" aria-label="Hero section with a vibrant gradient background and a faded image of a collaborative workspace">
+    <div class="hero-content">
+      <h1>Vibe Code Weekend</h1>
+      <p><strong>Build Real Software Without Learning to Code</strong></p>
+      <p>Experience the future of software creation with Vibe Coding—where AI does the technical work while you focus on creativity. Build and launch a fully functional web app in just one weekend, with no coding experience needed. It's not magic—it's the power of guided AI collaboration.</p>
+      <a href="#signup" class="cta-button">Reserve Your Spot - Only 20 Available!</a>
+      <div class="countdown" id="countdown">Early-Bird ($299) Ends in: <span id="timer"></span></div>
     </div>
+  </header><!-- /.hero -->
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 Vibe Code Weekend. All rights reserved. | <a href="mailto:contact@vibe-code-weekend.com">Contact Us</a> | Bismarck, ND</p>
-    </footer>
+  <main>
+    <section id="details">
+      <h2>Build Your Dream App in Just One Weekend</h2>
+      <p>Join our immersive, in-person workshop at Bismarck State College and transform your idea into a working web application you can actually use and share. Vibe coding eliminates technical barriers so you can focus on what matters—bringing your vision to life.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>📅 When</h3>
+          <p>March 15-16, 2025<br>9 AM - 3 PM (6 Hours/Day)</p>
+        </div>
+        <div class="card">
+          <h3>📍 Where</h3>
+          <p>Bismarck State College, Bismarck, ND</p>
+        </div>
+        <div class="card">
+          <h3>💻 What to Bring</h3>
+          <p>Your laptop, charger, and your pre-validated app idea (we'll help you prepare this in advance)!</p>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // Countdown Timer for Early-Bird
-        function countdown() {
-            const endDate = new Date("2025-03-01T23:59:59").getTime(); // Update to your early-bird deadline
-            const now = new Date().getTime();
-            const distance = endDate - now;
+    <section id="vibe-coding">
+      <h2>What is Vibe Coding?</h2>
+      <p>Vibe coding is a revolutionary approach that's transforming who can create software. Instead of spending months learning syntax and debugging errors, you engage in natural conversations with AI tools that generate, refine, and organize code for you. The result? You can build functional web applications in days instead of weeks or months—with zero prior coding experience.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Conversation-Driven Development</h3>
+          <p>Simply describe what you want to build, and watch as AI translates your words into working code. Ask follow-up questions, request changes, and refine your app through natural dialogue.</p>
+        </div>
+        <div class="card">
+          <h3>Focus on Creativity, Not Syntax</h3>
+          <p>Vibe coding frees you from technical barriers so you can concentrate on what really matters—building practical tools and solutions that serve real needs.</p>
+        </div>
+        <div class="card">
+          <h3>Rapid Iteration</h3>
+          <p>Make changes instantly without debugging frustrations. Just tell the AI what's not working or what you'd like to improve, and watch as it implements your feedback in real-time.</p>
+        </div>
+        <div class="card">
+          <h3>Learn by Doing</h3>
+          <p>Absorb coding concepts naturally as you build. Many vibe coders find they've gained valuable technical understanding without formal study.</p>
+        </div>
+      </div>
+      <a href="#signup" class="cta-button" style="margin-top: 40px;">Join the Vibe Coding Revolution!</a>
+    </section>
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    <section id="get-ready" class="get-ready">
+      <h2>Your Vibe Coding Toolkit</h2>
+      <p>We've carefully selected powerful yet accessible tools that make software creation intuitive, even for complete beginners:</p>
+      <p>📄 <a href="App Idea Validation Guide.md" download>Download App Idea Validation Guide</a></p>
+      <div class="cards">
+        <div class="card">
+          <h3>Prep Your Laptop</h3>
+          <p>Complete this simple setup by March 10, 2025, to ensure a smooth experience during the workshop:</p>
+          <ul class="checklist">
+            <li><input type="checkbox" id="check1"><label for="check1"><span>Install <a href="https://www.python.org/downloads/" target="_blank">Python 3.13</a> (don't worry, you won't need to write Python code yourself).</span></label></li>
+            <li><input type="checkbox" id="check2"><label for="check2"><span>Set up <a href="https://windsurf.io/" target="_blank">Windsurf</a> – the AI-powered editor that makes coding conversational.</span></label></li>
+            <li><input type="checkbox" id="check3"><label for="check3"><span>Install Streamlit using uv (<code>uv pip install streamlit</code> in terminal) – the framework that makes web apps simple.</span></label></li>
+            <li><input type="checkbox" id="check4"><label for="check4"><span>Complete our pre-workshop setup checklist (sent after registration).</span></label></li>
+            <li><input type="checkbox" id="check5"><label for="check5"><span>Fill out the App Idea Validation Form to ensure your project is achievable within the weekend (we'll help refine if needed).</span></label></li>
+            <li><input type="checkbox" id="check6"><label for="check6"><span>Join our <a href="[Insert Discord URL]" target="_blank">Vibe Coders Community</a> for pre-event support and networking.</span></label></li>
+          </ul>
+          <p>Need to confirm you're all set? Let us know by March 10:</p>
+          <a href="[Insert Google Form URL]" class="cta-button" style="padding: 12px 30px; font-size: 1.1rem;">Confirm Setup</a>
+        </div>
+        <div class="card">
+          <h3>24/7 Setup Support</h3>
+          <ul>
+            <li>Live Help Session on Zoom, March 12, 2025, 7 PM CST</li>
+            <li>Email assistance at <a href="mailto:support@vibe-code-weekend.com">support@vibe-code-weekend.com</a></li>
+            <li>Community support in our <a href="[Insert Discord URL]" target="_blank">Discord</a></li>
+          </ul>
+          <p>We guarantee you'll be ready – or we'll help you at the start of the workshop!</p>
+        </div>
+        <div class="card">
+          <h3>Your App Goes Live</h3>
+          <p>By Sunday afternoon, your app will be:</p>
+          <ul>
+            <li>Fully functional and accessible online</li>
+            <li>Deployable with one click to Streamlit Cloud</li>
+            <li>Ready to share with friends, family, and potential users</li>
+            <li>A real portfolio piece you can showcase</li>
+          </ul>
+        </div>
+      </div>
+      <a href="#signup" class="cta-button" style="margin-top: 40px;">Secure Your Spot Now!</a>
+    </section>
 
-            document.getElementById("timer").innerText = `${days}d ${hours}h ${minutes}m`;
+    <section id="learn">
+      <h2>Vibe Coding Skills You'll Master</h2>
+      <p>This weekend will transform how you approach software creation forever. You'll leave with:</p>
+      <div class="cards">
+        <div class="card">
+          <h3>AI Prompt Engineering</h3>
+          <p>Learn the "language" of talking to AI tools effectively to get precisely the code and features you want.</p>
+        </div>
+        <div class="card">
+          <h3>App Architecture Vision</h3>
+          <p>Understand how to structure apps for scalability without getting lost in technical details.</p>
+        </div>
+        <div class="card">
+          <h3>User Experience Design</h3>
+          <p>Create intuitive, beautiful interfaces that users love, without needing design experience.</p>
+        </div>
+        <div class="card">
+          <h3>Deployment Confidence</h3>
+          <p>Take your app from your computer to the web with simple, guided deployment steps.</p>
+        </div>
+      </div>
+    </section>
 
-            if (distance < 0) {
-                document.getElementById("countdown").innerText = "Early-Bird Pricing Ended!";
-            }
-        }
-        setInterval(countdown, 1000);
+    <section id="demo">
+      <h2>Apps You Can Build with Vibe Coding</h2>
+      <p>Here are examples of the types of apps you'll be able to create during the workshop:</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Budget Tracker</h3>
+          <p>A personal finance app that visualizes spending patterns and provides savings recommendations.</p>
+          <img src="/api/placeholder/400/250" alt="Budget Tracker App Example" />
+        </div>
+        <div class="card">
+          <h3>Recipe Finder</h3>
+          <p>An app that suggests recipes based on ingredients you already have at home.</p>
+          <img src="/api/placeholder/400/250" alt="Recipe Finder App Example" />
+        </div>
+      </div>
+      <p style="margin-top: 30px;">These aren't just mockups—you'll build fully functional, deployed apps just like these. Your creation will be next!</p>
+      <a href="#signup" class="cta-button" style="margin-top: 20px;">Start Building Your App!</a>
+    </section>
 
-        // Sticky CTA on Scroll
-        window.addEventListener("scroll", () => {
-            const stickyCta = document.getElementById("sticky-cta");
-            if (window.scrollY > 300) {
-                stickyCta.style.display = "block";
-            } else {
-                stickyCta.style.display = "none";
-            }
-        });
-    </script>
+    <section id="audience">
+      <h2>Is Vibe Coding For You?</h2>
+      <p>This workshop is perfect for:</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Idea-Rich, Tech-Shy Entrepreneurs</h3>
+          <p>Turn your business concepts into working prototypes without hiring developers.</p>
+        </div>
+        <div class="card">
+          <h3>Non-Technical Professionals</h3>
+          <p>Create tools to automate your workflow and solve problems specific to your field.</p>
+        </div>
+        <div class="card">
+          <h3>Students & Career-Changers</h3>
+          <p>Add valuable technical skills to your resume without months of traditional coding study.</p>
+        </div>
+        <div class="card">
+          <h3>Creative Thinkers</h3>
+          <p>Bring your unique ideas to life without being limited by technical constraints.</p>
+        </div>
+      </div>
+      <p>The only prerequisites are basic computer skills and a willingness to embrace a new way of creating. Your app idea and the application you build during the workshop are entirely your own.</p>
+    </section>
+
+    <section id="networking">
+      <h2>Connect with Bismarck's Innovation Community</h2>
+      <p>Vibe Code Weekend is as much about building connections as it is about building apps. You'll meet:</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Fellow Creators</h3>
+          <p>Connect with like-minded innovators who share your passion for bringing ideas to life.</p>
+        </div>
+        <div class="card">
+          <h3>Local Tech Leaders</h3>
+          <p>Network with established entrepreneurs and tech professionals from the Bismarck area.</p>
+        </div>
+        <div class="card">
+          <h3>Potential Collaborators</h3>
+          <p>Find partners for future projects, startups, and creative ventures.</p>
+        </div>
+      </div>
+      <p>Many past participants have formed lasting professional relationships and even launched businesses together after similar events.</p>
+      <a href="#signup" class="cta-button" style="margin-top: 40px;">Join Bismarck's Tech Community!</a>
+    </section>
+
+    <section id="testimonials">
+      <h2>What You'll Say After the Workshop</h2>
+      <p>By the end of the weekend, here's what you'll be telling your friends:</p>
+      <div class="cards">
+        <div class="card">
+          <p>"I went from thinking coding was impossibly complex to building and deploying my own web app in a single weekend. The conversational approach made all the difference—it felt like having a professional developer translating my ideas into reality."</p>
+          <h3>— You, after Vibe Code Weekend</h3>
+        </div>
+        <div class="card">
+          <p>"As someone with no technical background, I was skeptical that I could create anything functional in two days. Not only did I build a working prototype, but I gained the confidence to continue developing it after the workshop."</p>
+          <h3>— You, showing off your new app</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="bismarck">
+      <h2>Why I'm Bringing Vibe Coding to Bismarck</h2>
+      <p>North Dakota is fertile ground for innovation, with unique challenges and opportunities that require custom solutions. Bismarck deserves access to the transformative power of AI-assisted development to build our local tech ecosystem.</p>
+    </section>
+
+    <section id="pricing">
+      <h2>Secure Your Spot</h2>
+      <p>Limited to just 20 participants to ensure personalized attention and maximum success:</p>
+      <p class="spots-left" id="spots-left">Only <span id="remaining-spots">20</span> Spots Available!</p>
+      <div class="pricing">
+        <h3>Early Bird Access - <span class="price">$299</span> <span class="strikethrough">$399</span></h3>
+        <p>Includes full weekend workshop, all tools and resources, personalized guidance, ongoing community access, and your own deployed web application.</p>
+        <p><strong>Early bird pricing ends March 1, 2025</strong></p>
+        <a href="#signup" class="cta-button">Secure Your Early Bird Spot!</a>
+      </div>
+      <div class="pricing" style="margin-top: 20px;">
+        <h3>Standard Registration - <span class="price">$399</span></h3>
+        <p>Same comprehensive package, available after the early bird period ends.</p>
+        <a href="#signup" class="cta-button">Reserve Your Spot</a>
+      </div>
+      <p style="margin-top: 20px; font-style: italic;">Satisfaction Guarantee: If you don't deploy a working app by the end of the weekend, we'll refund your registration fee.</p>
+    </section>
+
+    <section id="schedule">
+      <h2>Your Vibe Coding Journey</h2>
+      <p>Here's how we'll transform your idea into a working web app over the weekend:</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Day 1: Vision to Framework</h3>
+          <ul>
+            <li><strong>9:00-10:30 AM:</strong> Vision Workshop & AI Dialogue Fundamentals</li>
+            <li><strong>10:30-12:00 PM:</strong> Creating Your App's Foundation</li>
+            <li><strong>12:00-12:45 PM:</strong> Lunch & Networking</li>
+            <li><strong>12:45-3:00 PM:</strong> Core Functionality Development</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Day 2: Polish & Launch</h3>
+          <ul>
+            <li><strong>9:00-10:30 AM:</strong> UI Enhancement & User Experience Design</li>
+            <li><strong>10:30-12:00 PM:</strong> Feature Refinement & Edge Cases</li>
+            <li><strong>12:00-12:45 PM:</strong> Lunch & Success Stories</li>
+            <li><strong>12:45-2:30 PM:</strong> Deployment & Launch Preparation</li>
+            <li><strong>2:30-3:00 PM:</strong> App Showcase & Future Development Plans</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="instructor">
+      <h2>Your Guide to Vibe Coding Mastery</h2>
+      <p>Leading this transformation is Gerry Wolfe, a seasoned software engineer who's pioneered the integration of AI tools into practical software development workflows. With 9+ years of experience creating software for businesses of all sizes, Gerry specializes in making technology accessible to non-technical creators.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Gerry Wolfe</h3>
+          <p>Lead Software Engineer & Product Development Expert</p>
+          <ul>
+            <li>Created 40+ web applications for clients ranging from startups to Fortune 500 companies</li>
+            <li>Helped over 200 non-technical professionals build their first functional apps</li>
+            <li>Early adopter and expert in AI-augmented development approaches</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Support Team</h3>
+          <p>You'll also have access to 3-5 experienced technical assistants who will provide personalized guidance throughout the weekend, ensuring you never get stuck.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Questions About Vibe Coding?</h2>
+      <p>Here are answers to the most common questions we receive:</p>
+      <div class="cards faq">
+        <div class="card">
+          <input type="checkbox" id="faq1">
+          <label class="question" for="faq1">Do I really need zero coding experience?</label>
+          <div class="answer">Absolutely! Vibe coding is specifically designed for people with no technical background. The AI tools do the heavy lifting while you focus on your vision and creativity. If you can have a conversation, you can vibe code.</div>
+        </div>
+        <div class="card">
+          <input type="checkbox" id="faq2">
+          <label class="question" for="faq2">What kind of apps can I build with vibe coding?</label>
+          <div class="answer">You can create a wide range of web applications, including: personal productivity tools, content management systems, data visualization dashboards, business process automation, simple e-commerce stores, event management platforms, and much more. We'll help you scope your idea to ensure it's achievable in a weekend.</div>
+        </div>
+        <div class="card">
+          <input type="checkbox" id="faq3">
+          <label class="question" for="faq3">Will my app continue to work after the workshop?</label>
+          <div class="answer">Yes! Your app will be deployed to Streamlit Cloud, which offers a generous free tier that keeps your app running indefinitely. You'll also have all the source code and deployment instructions to maintain and expand your app after the workshop.</div>
+        </div>
+        <div class="card">
+          <input type="checkbox" id="faq4">
+          <label class="question" for="faq4">How is vibe coding different from traditional development?</label>
+          <div class="answer">Traditional development requires learning programming languages, syntax, and frameworks—often taking months or years to master. Vibe coding leverages AI to handle the technical implementation while you focus on what you want to create. It's like having a skilled developer instantly translate your ideas into working code.</div>
+        </div>
+        <div class="card">
+          <input type="checkbox" id="faq5">
+          <label class="question" for="faq5">What if I get stuck during the workshop?</label>
+          <div class="answer">You'll never be left struggling! With a 5:1 participant-to-mentor ratio, help is always available. Our experienced team will provide personalized guidance whenever you need it.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signup">
+      <h2>Join the Vibe Coding Revolution in Bismarck</h2>
+      <p>Transform from idea-haver to app-creator in one weekend. Reserve your spot now—limited to just 20 participants to ensure personalized attention.</p>
+      <p class="spots-left" id="spots-left">Only <span id="remaining-spots">20</span> Spots Available!</p>
+      <div class="signup-form">
+        <form action="[Insert Google Form URL]" method="POST">
+          <label for="signup-name" class="sr-only">Full Name</label>
+          <input type="text" id="signup-name" name="name" placeholder="Full Name" required>
+          <label for="signup-email" class="sr-only">Email Address</label>
+          <input type="email" id="signup-email" name="email" placeholder="Email Address" required>
+          <label for="signup-phone" class="sr-only">Phone Number</label>
+          <input type="tel" id="signup-phone" name="phone" placeholder="Phone Number">
+          <label for="signup-idea" class="sr-only">Brief App Idea (Optional)</label>
+          <textarea id="signup-idea" name="idea" placeholder="Brief description of your app idea (Optional)"></textarea>
+          <button type="submit" class="cta-button">Reserve My Spot ($299 Early Bird)</button>
+        </form>
+      </div>
+    </section>
+
+    <div class="sticky-cta" id="sticky-cta">
+      <a href="#signup" class="cta-button">Only 20 Spots Left - Claim Yours!</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Gerry Wolfe. All rights reserved. | <a href="mailto:contact@vibe-code-weekend.com">Contact Us</a> | Bismarck, ND</p>
+    <img src="/api/placeholder/100/100" alt="Vibe Code Weekend QR Code" style="width: 100px; margin-top: 20px;">
+  </footer>
+
+  <script>
+    function countdown() {
+      const endDate = new Date("2025-03-01T23:59:59").getTime();
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById("timer").innerText = `${days}d ${hours}h ${minutes}m`;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerText = "Early-Bird Pricing Ended!";
+      }
+    }
+    setInterval(countdown, 1000);
+
+    window.addEventListener("scroll", () => {
+      const stickyCta = document.getElementById("sticky-cta");
+      if (window.scrollY > 300) {
+        stickyCta.style.display = "block";
+      } else {
+        stickyCta.style.display = "none";
+      }
+    });
+
+    // Spots remaining countdown (update with Google Sheets API or manually)
+    const totalSpots = 20;
+    let registered = 0; // Replace with dynamic count from Google Sheets
+    document.getElementById("remaining-spots").innerText = totalSpots - registered;
+  </script>
 </body>
 </html>
