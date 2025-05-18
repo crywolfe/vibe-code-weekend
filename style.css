@@ -25,8 +25,8 @@
 }
 
 body {
-    background-color: #f8fafc;
-    color: #1a1a40;
+    background-color: #f7f8fa;
+    color: #22243a;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -75,9 +75,9 @@ body {
 }
 
 .cta-button {
-    background: linear-gradient(45deg, #ff6f61, #ff3e5b);
+    background: linear-gradient(45deg, #ff7e6b, #ff4e7b);
     background-size: 200% 200%; /* For hover gradient shift */
-    color: white;
+    color: #fff;
     padding: 18px 50px;
     border-radius: 50px;
     text-decoration: none;
@@ -86,6 +86,7 @@ body {
     display: inline-block;
     transition: transform 0.3s, box-shadow 0.3s, background-position 0.5s ease;
     animation: pulse 2s infinite;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.13), 0 0.5px 0.5px rgba(0,0,0,0.10);
 }
 
 .cta-button:hover {
@@ -121,7 +122,7 @@ section p {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto 30px;
-    color: #555;
+    color: #444;
 }
 
 .cards {
@@ -132,10 +133,10 @@ section p {
 }
 
 .card {
-    background: white;
+    background: #e9ebf0;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
     animation: slideUp 1s ease-in;
 }
@@ -274,21 +275,21 @@ section p {
 }
 
 footer {
-    background: #1a1a40;
-    color: white;
+    background: #e9ebf0;
+    color: #22243a;
     text-align: center;
     padding: 40px;
     font-size: 1rem;
 }
 
 footer a {
-    color: #00ddeb;
+    color: #009fc2;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 footer a:hover {
-    color: #ff6f61;
+    color: #ff4e7b;
 }
 
 .checklist {
@@ -388,10 +389,225 @@ footer a:hover {
 }
 .tagline-highlight {
     font-size: 1.3rem;
-    color: #9f2116;
+    background: linear-gradient(90deg, #009fc2, #00ddeb 20%, #6b48ff 60%, #ff6f61 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background 0.4s;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.10), 0 0.5px 0.5px rgba(0,0,0,0.06);
 }
+body.dark-mode .tagline-highlight {
+    background: linear-gradient(90deg, #8ad7ff, #3e5bff, #ffb86b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline-strong {
+  color: #005b8c;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.18), 0 0.5px 0.5px rgba(0,0,0,0.06);
+}
+body.dark-mode .tagline-strong {
+  color: #8ad7ff;
+  text-shadow: none;
+}
+
+/* --- Responsive Typography --- */
+html { font-size: clamp(16px, 2vw, 22px); }
+h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+/* --- Glassmorphism Card Effect --- */
+.glass {
+  background: rgba(255,255,255,0.22);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* --- Scroll Animation Classes --- */
+.fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.slide-in-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.8s, transform 0.8s; }
+.slide-in-left.visible { opacity: 1; transform: translateX(0); }
+.slide-in-right { opacity: 0; transform: translateX(60px); transition: opacity 0.8s, transform 0.8s; }
+.slide-in-right.visible { opacity: 1; transform: translateX(0); }
+
+/* --- Parallax Hero --- */
+.hero.parallax {
+  will-change: background-position;
+  background-attachment: fixed;
+  background-position: center 0px;
+}
+@media (max-width: 900px) {
+  .hero.parallax { background-attachment: scroll; }
+}
+
+/* --- Animated Gradient Underline for Section Titles --- */
+.section-title-underline {
+  display: inline-block;
+  position: relative;
+}
+.section-title-underline::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #6b48ff, #00ddeb, #ff6f61, #6b48ff);
+  background-size: 200% 200%;
+  animation: underlineGradient 3s linear infinite;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  z-index: 1;
+}
+@keyframes underlineGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* --- Glassmorphism Card Effect --- */
+.glass {
+  background: rgba(255,255,255,0.22);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* --- Scroll Animation Classes --- */
+.fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.slide-in-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.8s, transform 0.8s; }
+.slide-in-left.visible { opacity: 1; transform: translateX(0); }
+.slide-in-right { opacity: 0; transform: translateX(60px); transition: opacity 0.8s, transform 0.8s; }
+.slide-in-right.visible { opacity: 1; transform: translateX(0); }
+
+/* --- Parallax Hero --- */
+.hero.parallax {
+  will-change: background-position;
+  background-attachment: fixed;
+  background-position: center 0px;
+}
+@media (max-width: 900px) {
+  .hero.parallax { background-attachment: scroll; }
+}
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+  background: #18182a !important;
+  color: #f7f7fc !important;
+}
+body.dark-mode .hero, body.dark-mode .hero.parallax {
+  background: linear-gradient(135deg, #23234b 0%, #1a1a40 100%) !important;
+  color: #f7f7fc !important;
+}
+body.dark-mode .card, body.dark-mode .glass {
+  background: rgba(30,30,60,0.7) !important;
+  color: #f7f7fc !important;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25) !important;
+}
+body.dark-mode .cta-button {
+  background: linear-gradient(45deg, #3e5bff, #00ddeb) !important;
+  color: #fff !important;
+}
+body.dark-mode section h2, body.dark-mode .section-title-underline {
+  color: #8ad7ff !important;
+}
+body.dark-mode footer {
+  background: #23234b !important;
+  color: #e0e0e0 !important;
+}
+body.dark-mode .countdown {
+  color: #ffe066 !important;
+}
+body.dark-mode .sticky-cta .cta-button {
+  background: linear-gradient(45deg, #3e5bff, #00ddeb) !important;
+}
+
+/* --- Ripple Effect for Buttons --- */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* --- SVG Wave Styles --- */
+.svg-wave-container {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  top: -10px;
+  z-index: 0;
+}
+.svg-wave {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* --- Section Title Underline Animation --- */
+.section-title-underline {
+  display: inline-block;
+  position: relative;
+}
+.section-title-underline::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #6b48ff, #00ddeb, #ff6f61, #6b48ff);
+  background-size: 200% 200%;
+  animation: underlineGradient 3s linear infinite;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  z-index: 1;
+}
+@keyframes underlineGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* --- Animated Checklist Checkmarks --- */
+.checklist label.checked span::before {
+  content: '✅';
+  color: #26e36b;
+  font-size: 1.2rem;
+  margin-right: 8px;
+  animation: checkmarkPop 0.4s cubic-bezier(.6,-0.28,.74,.05);
+}
+@keyframes checkmarkPop {
+  0% { transform: scale(0.3) rotate(-30deg); opacity: 0; }
+  80% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
 
 .prerequisite-paragraph {
     margin-top: 30px;

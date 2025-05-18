@@ -15,14 +15,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" aria-label="Toggle dark mode" style="position:fixed;top:24px;right:24px;z-index:2000;background:none;border:none;cursor:pointer;font-size:2rem;">
+      <span id="darkModeIcon">🌙</span>
+    </button>
     <header
-      class="hero"
+      class="hero parallax"
       aria-label="Hero section with a vibrant gradient background and a faded image of a collaborative workspace"
     >
       <div class="hero-content">
         <h1>Vibe Code Weekend</h1>
         <p><strong>Build Real Software Without Learning to Code</strong></p>
-        <p class="tagline-highlight">Build with words, not code</p>
+        <p class="tagline-highlight"><span class="tagline-strong">Build</span> with words, not code</p>
         <p>
           Experience the future of software creation with Vibe Coding—where AI
           does the technical work while you guide your AI agent to create your
@@ -38,11 +42,12 @@
         </div>
       </div>
     </header>
+
     <!-- /.hero -->
 
     <main>
       <section id="details">
-        <h2>Build Your Dream App in Just One Weekend</h2>
+        <h2 class="section-title-underline fade-in">Build Your Dream App in Just One Weekend</h2>
         <p>
           Join our immersive, in-person workshop at Bismarck State College and
           transform your idea into a working web application you can actually
@@ -69,7 +74,7 @@
       </section>
 
       <section id="vibe-coding">
-        <h2>What is Vibe Coding?</h2>
+        <h2 class="section-title-underline fade-in">What is Vibe Coding?</h2>
         <p>
           Vibe coding is a revolutionary approach that's transforming who can
           create software. Instead of spending months learning syntax and
@@ -118,7 +123,7 @@
       </section>
 
       <section id="get-ready" class="get-ready">
-        <h2>Your Vibe Coding Toolkit</h2>
+        <h2 class="section-title-underline fade-in">Your Vibe Coding Toolkit</h2>
         <p>
           We've carefully selected powerful yet accessible tools that make
           software creation intuitive, even for complete beginners:
@@ -137,6 +142,7 @@
               experience during the workshop:
             </p>
             <ul class="checklist">
+  <!-- Animated checklist checkmarks handled by CSS/JS -->
               <li>
                 <input type="checkbox" id="check1" /><label for="check1"
                   ><span
@@ -213,8 +219,8 @@
               <li>Live Help Session on Zoom, March 12, 2025, 7 PM CST</li>
               <li>
                 Email assistance at
-                <a href="mailto:support@vibe-code-weekend.com"
-                  >support@vibe-code-weekend.com</a
+                <a href="mailto:vibe-code-weekend@gerrywolfe.com"
+                  >vibe-code-weekend@gerrywolfe.com</a
                 >
               </li>
               <li>
@@ -223,8 +229,7 @@
               </li>
             </ul>
             <p>
-              We guarantee you'll be ready – or we'll help you at the start of
-              the workshop!
+              We guarantee you'll be ready – or we'll help you at the start of the workshop!
             </p>
           </div>
           <div class="card">
@@ -687,7 +692,7 @@
                 >Download App Idea Validation Guide</a
               >
             </p>
-            <button type="submit" class="cta-button">
+            <button type="submit" class="cta-button ripple">
               Reserve My Spot ($379 Early Bird)
             </button>
           </form>
@@ -754,5 +759,138 @@
       document.getElementById("remaining-spots").innerText =
         totalSpots - registered;
     </script>
-  </body>
+  <script>
+// Parallax Hero Background
+window.addEventListener('scroll', function() {
+  const hero = document.querySelector('.hero.parallax');
+  if(hero) {
+    let offset = window.scrollY * 0.3;
+    hero.style.backgroundPosition = `center ${offset}px`;
+  }
+});
+// Scroll-triggered Animations
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+  const windowHeight = window.innerHeight;
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    if(elementTop < windowHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('DOMContentLoaded', revealOnScroll);
+</script>
+<script>
+// Dark Mode Toggle
+const darkModeToggle = document.getElementById('darkModeToggle');
+const darkModeIcon = document.getElementById('darkModeIcon');
+function setDarkMode(on) {
+  if(on) {
+    document.body.classList.add('dark-mode');
+    darkModeIcon.textContent = '☀️';
+    localStorage.setItem('darkMode','1');
+  } else {
+    document.body.classList.remove('dark-mode');
+    darkModeIcon.textContent = '🌙';
+    localStorage.setItem('darkMode','0');
+  }
+}
+darkModeToggle.onclick = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+// Remember user preference
+if(localStorage.getItem('darkMode')==='1') setDarkMode(true);
+
+// Button Ripple Micro-interaction
+function createRipple(e) {
+  const button = e.currentTarget;
+  const circle = document.createElement('span');
+  circle.className = 'ripple-effect';
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  circle.style.width = circle.style.height = diameter + 'px';
+  circle.style.left = (e.clientX - button.getBoundingClientRect().left - diameter/2) + 'px';
+  circle.style.top = (e.clientY - button.getBoundingClientRect().top - diameter/2) + 'px';
+  button.appendChild(circle);
+  setTimeout(()=>circle.remove(), 600);
+}
+document.querySelectorAll('.ripple').forEach(btn =>
+  btn.addEventListener('click', createRipple)
+);
+// Animated Checklist Checkmarks
+const checklist = document.querySelector('.checklist');
+if(checklist) checklist.addEventListener('change', function(e){
+  if(e.target.type==='checkbox') {
+    const label = e.target.nextElementSibling;
+    if(label) label.classList.toggle('checked', e.target.checked);
+  }
+});
+</script>
+<style>
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #18182a !important;
+  color: #f7f7fc !important;
+}
+body.dark-mode .hero, body.dark-mode .hero.parallax {
+  background: linear-gradient(135deg, #23234b 0%, #1a1a40 100%) !important;
+  color: #f7f7fc !important;
+}
+body.dark-mode .card, body.dark-mode .glass {
+  background: rgba(30,30,60,0.7) !important;
+  color: #f7f7fc !important;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25) !important;
+}
+body.dark-mode .cta-button {
+  background: linear-gradient(45deg, #3e5bff, #00ddeb) !important;
+  color: #fff !important;
+}
+body.dark-mode section h2, body.dark-mode .section-title-underline {
+  color: #8ad7ff !important;
+}
+body.dark-mode footer {
+  background: #23234b !important;
+  color: #e0e0e0 !important;
+}
+body.dark-mode .countdown {
+  color: #ffe066 !important;
+}
+body.dark-mode .sticky-cta .cta-button {
+  background: linear-gradient(45deg, #3e5bff, #00ddeb) !important;
+}
+/* Ripple Effect for Buttons */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+/* Animated Checklist Checkmarks */
+.checklist label.checked span::before {
+  content: '✅';
+  color: #26e36b;
+  font-size: 1.2rem;
+  margin-right: 8px;
+  animation: checkmarkPop 0.4s cubic-bezier(.6,-0.28,.74,.05);
+}
+@keyframes checkmarkPop {
+  0% { transform: scale(0.3) rotate(-30deg); opacity: 0; }
+  80% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+</style>
+
+</body>
 </html>
