@@ -12,6 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.2/src/css/phosphor.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -19,13 +21,16 @@
     <button id="darkModeToggle" aria-label="Toggle dark mode" style="position:fixed;top:24px;right:24px;z-index:2000;background:none;border:none;cursor:pointer;font-size:2rem;">
       <span id="darkModeIcon">🌙</span>
     </button>
+    <!-- Animated SVG Blobs for Hero -->
+    <div class="blob blob-hero-1"></div>
+    <div class="blob blob-hero-2"></div>
     <header
       class="hero parallax"
       aria-label="Hero section with a vibrant gradient background and a faded image of a collaborative workspace"
     >
       <div class="hero-content">
-        <h1>Vibe Code Weekend</h1>
-        <p><strong>Build Real Software Without Learning to Code</strong></p>
+        <h1 class="font-heading">Vibe Code Weekend</h1>
+        <p class="font-body"><strong>Build Real Software Without Learning to Code</strong></p>
         <p class="tagline-highlight"><span class="tagline-strong">Build</span> with words, not code</p>
         <p>
           Experience the future of software creation with Vibe Coding—where AI
@@ -34,18 +39,20 @@
           weekend, with no coding experience needed. It's not magic—it's the
           power of guided AI collaboration.
         </p>
-        <a href="#signup" class="cta-button"
-          >Reserve Your Spot - Only 20 Available!</a
-        >
-        <div class="countdown" id="countdown">
-          Early-Bird ($379) Ends in: <span id="timer"></span>
+        <a href="#signup" class="cta-button">
+          <i class="ph ph-lightning"></i> Reserve Your Spot
+        </a>
+                <div class="countdown" id="countdown">
+          <i class="ph ph-timer"></i> Early-Bird ($379) Ends in: <span id="timer"></span>
         </div>
       </div>
     </header>
 
     <!-- /.hero -->
 
-    <main>
+    <!-- SVG Section Divider -->
+    <svg class="section-divider" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C600,120 600,0 1200,120 L1200,0 L0,0 Z" fill="#f7f8fa"/></svg>
+    <main id="cta-section">
       <section id="details">
         <h2 class="section-title-underline fade-in">Build Your Dream App in Just One Weekend</h2>
         <p>
@@ -122,7 +129,7 @@
         >
       </section>
 
-      <section id="get-ready" class="get-ready">
+      <section class="get-ready">
         <h2 class="section-title-underline fade-in">Your Vibe Coding Toolkit</h2>
         <p>
           We've carefully selected powerful yet accessible tools that make
@@ -136,13 +143,13 @@
         </p>
         <div class="cards">
           <div class="card">
-            <h3>Prep Your Laptop</h3>
+            <h3 class="center-text">Prep Your Laptop</h3>
             <p>
               Complete this simple setup by March 10, 2025, to ensure a smooth
               experience during the workshop:
             </p>
             <ul class="checklist">
-  <!-- Animated checklist checkmarks handled by CSS/JS -->
+              <!-- Animated checklist checkmarks handled by CSS/JS -->
               <li>
                 <input type="checkbox" id="check1" /><label for="check1"
                   ><span
@@ -162,17 +169,6 @@
                     <a href="https://windsurf.io/" target="_blank">Windsurf</a>
                     – the AI-powered editor that makes coding
                     conversational.</span
-                  ></label
-                >
-              </li>
-              <li>
-                <input type="checkbox" id="check3" /><label for="check3"
-                  ><span
-                    >Install Streamlit using uv (<code
-                      >uv pip install streamlit</code
-                    >
-                    in terminal) – the framework that makes web apps
-                    simple.</span
                   ></label
                 >
               </li>
@@ -209,41 +205,6 @@
             <a
               href="[Insert Google Form URL]"
               class="cta-button"
-              style="padding: 12px 30px; font-size: 1.1rem"
-              >Confirm Setup</a
-            >
-          </div>
-          <div class="card">
-            <h3>24/7 Setup Support</h3>
-            <ul>
-              <li>Live Help Session on Zoom, March 12, 2025, 7 PM CST</li>
-              <li>
-                Email assistance at
-                <a href="mailto:vibe-code-weekend@gerrywolfe.com"
-                  >vibe-code-weekend@gerrywolfe.com</a
-                >
-              </li>
-              <li>
-                Community support in our
-                <a href="[Insert Discord URL]" target="_blank">Discord</a>
-              </li>
-            </ul>
-            <p>
-              We guarantee you'll be ready – or we'll help you at the start of the workshop!
-            </p>
-          </div>
-          <div class="card">
-            <h3>Your App Goes Live</h3>
-            <p>By Sunday afternoon, your app will be:</p>
-            <ul>
-              <li>Fully functional and accessible online</li>
-              <li>Deployable with one click to Streamlit Cloud</li>
-              <li>Ready to share with friends, family, and potential users</li>
-              <li>A real portfolio piece you can showcase</li>
-            </ul>
-          </div>
-        </div>
-        <a href="#signup" class="cta-button" style="margin-top: 40px"
           >Secure Your Spot Now!</a
         >
       </section>
@@ -426,6 +387,12 @@
             </p>
             <h3>— You, showing off your new app</h3>
           </div>
+          <div class="card">
+            <p>
+              "I never thought I'd say this, but I actually had fun telling my laptop what to do!  Who knew it could be so enjoyable?"
+            </p>
+            <h3>— You, surprised by how much fun you had</h3>
+          </div>
         </div>
       </section>
 
@@ -441,10 +408,9 @@
       <section id="pricing">
         <h2>Secure Your Spot</h2>
         <p>
-          Limited to just 20 participants to ensure personalized attention and
-          maximum success:
+          Limited to ensure personalized attention and maximum success:
         </p>
-        <p class="spots-left" id="spots-left">
+        <p class="centered-announcement" id="spots-left">
           Only <span id="remaining-spots">20</span> Spots Available!
         </p>
         <div class="pricing">
@@ -468,7 +434,7 @@
           </p>
           <a href="#signup" class="cta-button">Reserve Your Spot</a>
 <p style="margin-top: 20px;">
-          We accept: <img src="https://www.svgrepo.com/show/303287/bitcoin-logo.svg" alt="Bitcoin icon" width="20" height="20" style="vertical-align: middle;"> Bitcoin, <img src="https://www.svgrepo.com/show/379356/ethereum.svg" alt="Ethereum icon" width="20" height="20" style="vertical-align: middle;"> Ethereum, <img src="https://www.svgrepo.com/show/342335/venmo.svg" alt="Venmo icon" width="20" height="20" style="vertical-align: middle;"> Venmo, and <img src="https://www.svgrepo.com/show/328122/paypal.svg" alt="PayPal icon" width="20" height="20" style="vertical-align: middle;"> PayPal.
+          We accept: <img src="https://www.svgrepo.com/show/303287/bitcoin-logo.svg" alt="Bitcoin icon" width="20" height="20" style="vertical-align: middle;"> Bitcoin, <img src="https://www.svgrepo.com/show/349356/ethereum.svg" alt="Ethereum icon" width="20" height="20" style="vertical-align: middle;"> Ethereum, <img src="https://www.svgrepo.com/show/342335/venmo.svg" alt="Venmo icon" width="20" height="20" style="vertical-align: middle;"> Venmo, and <img src="https://www.svgrepo.com/show/328122/paypal.svg" alt="PayPal icon" width="20" height="20" style="vertical-align: middle;"> PayPal.
         </p>
         </div>
         <p style="margin-top: 20px; font-style: italic">
@@ -642,11 +608,8 @@
         <h2>Join the Vibe Coding Movement in Bismarck</h2>
         <p>
           Transform yourself from <b>idea-haver</b> to <b>app-creator</b> in one
-          weekend. Reserve your spot now—limited to just 20 participants to
+          weekend. Reserve your spot now—limited to
           ensure personalized attention.
-        </p>
-        <p class="spots-left" id="spots-left">
-          Only <span id="remaining-spots">20</span> Spots Available!
         </p>
 
         <div class="signup-form">
@@ -738,8 +701,8 @@
         ).innerText = `${days}d ${hours}h ${minutes}m`;
 
         if (distance < 0) {
-          document.getElementById("countdown").innerText =
-            "Early-Bird Pricing Ended!";
+          document.getElementById("countdown").innerHTML =
+            '<span class="ended">Early-Bird Pricing Ended!</span>';
         }
       }
       setInterval(countdown, 1000);
